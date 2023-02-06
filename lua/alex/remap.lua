@@ -4,7 +4,7 @@ vim.keymap.set("n", "<leader>t", function()
 end)
 
 vim.keymap.set("n", "<C-s>", function()
-    vim.cmd("LspZeroFormat")
+    vim.lsp.buf.format()
     vim.cmd("w")
     print("File saved and formatted.")
 end)
@@ -14,6 +14,6 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
-vim.keymap.set("n", "<leader>h", function ()
+vim.keymap.set("n", "<leader>h", function()
     vim.lsp.buf.hover()
 end)
