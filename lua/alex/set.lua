@@ -19,6 +19,7 @@ vim.opt.termguicolors = true
 vim.opt.scrolloff = 8
 
 vim.opt.updatetime = 50
+vim.opt.splitright = true
 
 vim.lsp.set_log_level("debug")
 

@@ -9,7 +9,10 @@ return require('packer').startup(function(use)
     }
 
     use 'marko-cerovac/material.nvim'
+
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
+    use 'nvim-treesitter/playground'
+
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -24,6 +27,8 @@ return require('packer').startup(function(use)
         "nvim-lualine/lualine.nvim",
         requires = { "kyazdani42/nvim-web-devicons", opt = true }
     }
+
+    use 'numToStr/Comment.nvim'
 
     use {
         'VonHeikemen/lsp-zero.nvim',

@@ -1,0 +1,1 @@
+/home/alex/Documents/University/Master/tree-sitter-p4/queries/highlights.scm

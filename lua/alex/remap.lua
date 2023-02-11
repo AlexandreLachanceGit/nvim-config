@@ -12,8 +12,32 @@ end)
 vim.keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+vim.keymap.set("n", "<C-r>", function()
+    local function snake(s)
+        return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)',
+            '%1_%2'):lower()
+    end
+
+    local original_word = vim.fn.expand("<cword>")
+    local line = debug.getinfo(1).currentline
+
+    vim.cmd("%s/" .. original_word .. "/" .. snake(original_word) .. "/g")
+end)
+
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
 vim.keymap.set("n", "<leader>h", function()
     vim.lsp.buf.hover()
 end)
+
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
+-- test_test
