@@ -27,19 +27,34 @@ Language Server Protocol for P4.
 
 require('lspconfig').p4_lsp.setup {}
 
-require('lspconfig').rust_analyzer.setup {
-    settings = {
-        ['rust-analyzer'] = {
-            checkOnSave = {
-                allFeatures = true,
-                overrideCommand = {
-                    'cargo', 'clippy', '--workspace', '--message-format=json',
-                    '--all-targets', '--all-features'
-                }
-            }
-        }
-    }
-}
+-- require('lspconfig').rust_analyzer.setup {
+--     settings = {
+--         ['rust-analyzer'] = {
+--             checkOnSave = {
+--                 allFeatures = true,
+--                 overrideCommand = {
+--                     'cargo', 'clippy', '--workspace', '--message-format=json',
+--                     '--all-targets', '--all-features'
+--                 }
+--             },
+--         }
+--     }
+-- }
+
+local rt = require("rust-tools").setup({
+    server = {
+        settings = {
+            -- to enable rust-analyzer settings visit:
+            -- https://github.com/rust-analyzer/rust-analyzer/blob/master/docs/user/generated_config.adoc
+            ["rust-analyzer"] = {
+                -- enable clippy on save
+                checkOnSave = {
+                    command = "clippy",
+                },
+            },
+        },
+    },
+})
 
 
 lsp.setup()

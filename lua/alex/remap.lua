@@ -30,14 +30,16 @@ vim.keymap.set("n", "<leader>h", function()
     vim.lsp.buf.hover()
 end)
 
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
--- test_test
+local inlay_hints = false
+vim.keymap.set("n", "<leader>eh", function()
+    local rt = require('rust-tools')
+    if not inlay_hints then
+        print("Enabled type hints.")
+        rt.inlay_hints.enable()
+        inlay_hints = true
+    else
+        print("Disabled type hints.")
+        rt.inlay_hints.disable()
+        inlay_hints = false
+    end
+end)
