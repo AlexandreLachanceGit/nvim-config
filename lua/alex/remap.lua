@@ -43,3 +43,9 @@ vim.keymap.set("n", "<leader>eh", function()
         inlay_hints = false
     end
 end)
+
+vim.keymap.set("n", "<leader>eb", function()
+    local gs = package.loaded.gitsigns
+
+    gs.toggle_current_line_blame()
+end)

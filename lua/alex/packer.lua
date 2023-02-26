@@ -33,6 +33,10 @@ return require('packer').startup(function(use)
     use 'simrat39/rust-tools.nvim'
 
     use {
+        'lewis6991/gitsigns.nvim',
+    }
+
+    use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
         requires = {
