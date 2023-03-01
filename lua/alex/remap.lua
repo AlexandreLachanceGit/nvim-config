@@ -49,3 +49,7 @@ vim.keymap.set("n", "<leader>eb", function()
 
     gs.toggle_current_line_blame()
 end)
+
+vim.keymap.set("n", "<leader>et", function()
+    vim.cmd "TSPlaygroundToggle"
+end)
