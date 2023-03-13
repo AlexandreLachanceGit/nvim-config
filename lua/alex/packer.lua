@@ -33,8 +33,12 @@ return require('packer').startup(function(use)
 
     use 'simrat39/rust-tools.nvim'
 
-    use {
-        'lewis6991/gitsigns.nvim',
+    use 'lewis6991/gitsigns.nvim'
+
+    use { 'ggandor/leap.nvim',
+        requires = {
+            'tpope/vim-repeat'
+        }
     }
 
     use {
