@@ -1,8 +1,4 @@
 local lsp = require('lsp-zero')
-lsp.preset('recommended')
-
--- (Optional) Configure lua language server for neovim
-lsp.nvim_workspace()
 
 local configs = require("lspconfig.configs")
 local util = require("lspconfig.util")
@@ -25,21 +21,7 @@ Language Server Protocol for P4.
     },
 }
 
-require('lspconfig').p4_lsp.setup {}
-
--- require('lspconfig').rust_analyzer.setup {
---     settings = {
---         ['rust-analyzer'] = {
---             checkOnSave = {
---                 allFeatures = true,
---                 overrideCommand = {
---                     'cargo', 'clippy', '--workspace', '--message-format=json',
---                     '--all-targets', '--all-features'
---                 }
---             },
---         }
---     }
--- }
+lsp.configure('p4_lsp')
 
 local rt = require("rust-tools").setup({
     server = {
@@ -56,5 +38,6 @@ local rt = require("rust-tools").setup({
     },
 })
 
-
+lsp.preset('recommended')
+lsp.nvim_workspace()
 lsp.setup()
