@@ -21,7 +21,16 @@ Language Server Protocol for P4.
     },
 }
 
-lsp.configure('p4_lsp')
+lsp.configure('p4_lsp', {
+    init_options = {
+        ["p4_lsp"] = {
+            p4test_path = "test"
+        }
+    },
+    settings = {
+        p4test_path = "test"
+    }
+})
 
 local rt = require("rust-tools").setup({
     server = {
