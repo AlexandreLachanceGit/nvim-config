@@ -51,5 +51,5 @@ vim.keymap.set("n", "<leader>eb", function()
 end)
 
 vim.keymap.set("n", "<leader>et", function()
-    vim.cmd "TSPlaygroundToggle"
+    vim.cmd "InspectTree"
 end)

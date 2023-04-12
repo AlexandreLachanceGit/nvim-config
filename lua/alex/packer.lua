@@ -11,7 +11,6 @@ return require('packer').startup(function(use)
     use 'marko-cerovac/material.nvim'
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
-    use 'nvim-treesitter/playground'
     use 'windwp/nvim-autopairs'
 
     use {

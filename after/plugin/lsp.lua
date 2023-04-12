@@ -22,13 +22,9 @@ Language Server Protocol for P4.
 }
 
 lsp.configure('p4_lsp', {
-    init_options = {
-        ["p4_lsp"] = {
-            p4test_path = "test"
-        }
-    },
     settings = {
-        p4test_path = "test"
+        p4test_path = "/home/alex/.local/bin/p4c_backend_p4test",
+        include_path = "/home/alex/Documents/University/Master/p4c/p4include"
     }
 })
 
