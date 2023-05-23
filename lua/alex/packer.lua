@@ -40,6 +40,8 @@ return require('packer').startup(function(use)
         }
     }
 
+    use { "alexghergh/nvim-tmux-navigation" }
+
     use {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v1.x',
