@@ -1,6 +1,6 @@
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>t", function()
-    vim.cmd("NvimTreeToggle")
+    vim.cmd("NeoTreeFocusToggle")
 end)
 
 vim.keymap.set("n", "<C-s>", function()
