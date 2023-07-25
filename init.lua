@@ -16,7 +16,8 @@ require("set")
 
 require("lazy").setup({
     {
-        "nvim-telescope/telescope.nvim", tag = "0.1.1",
+        "nvim-telescope/telescope.nvim",
+        tag = "0.1.1",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
     "marko-cerovac/material.nvim",
@@ -42,7 +43,8 @@ require("lazy").setup({
 
     "lewis6991/gitsigns.nvim",
 
-    { "ggandor/leap.nvim",
+    {
+        "ggandor/leap.nvim",
         dependencies = {
             "tpope/vim-repeat"
         }
@@ -52,28 +54,37 @@ require("lazy").setup({
 
     "habamax/vim-godot",
 
+
+
     {
-        "VonHeikemen/lsp-zero.nvim",
-        branch = "v1.x",
+        'VonHeikemen/lsp-zero.nvim',
+        branch = 'v2.x',
         dependencies = {
             -- LSP Support
-            "neovim/nvim-lspconfig", -- Required
-            "williamboman/mason.nvim", -- Optional
-            "williamboman/mason-lspconfig.nvim", -- Optional
+            { 'neovim/nvim-lspconfig' }, -- Required
+            {                            -- Optional
+                'williamboman/mason.nvim',
+                build = function()
+                    pcall(vim.api.nvim_command, 'MasonUpdate')
+                end,
+            },
+            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
             -- Autocompletion
-            "hrsh7th/nvim-cmp", -- Required
-            "hrsh7th/cmp-nvim-lsp", -- Required
-            "hrsh7th/cmp-buffer", -- Optional
-            "hrsh7th/cmp-path", -- Optional
-            "saadparwaiz1/cmp_luasnip", -- Optional
-            "hrsh7th/cmp-nvim-lua", -- Optional
+            { 'hrsh7th/nvim-cmp' },     -- Required
+            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+            { 'L3MON4D3/LuaSnip' },     -- Required
 
-            -- Snippets
-            "L3MON4D3/LuaSnip", -- Required
-            "rafamadriz/friendly-snippets", -- Optional
+            -- Autocompletion sources
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-nvim-lua',
+            'saadparwaiz1/cmp_luasnip',
+            'rafamadriz/friendly-snippets',
+            'L3MON4D3/LuaSnip'
         }
-    },
+    }
 })
 
 vim.api.nvim_create_autocmd(
@@ -84,8 +95,8 @@ vim.api.nvim_create_autocmd(
     {
         pattern = "*.p4",
         callback = function()
-                local buf = vim.api.nvim_get_current_buf()
-                vim.api.nvim_buf_set_option(buf, "filetype", "p4")
+            local buf = vim.api.nvim_get_current_buf()
+            vim.api.nvim_buf_set_option(buf, "filetype", "p4")
         end
     }
 )
