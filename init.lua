@@ -11,7 +11,8 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
-vim.g.mapleader = " "
+require("remap")
+require("set")
 
 require("lazy").setup({
     {
@@ -74,4 +75,17 @@ require("lazy").setup({
         }
     },
 })
-require("alex")
+
+vim.api.nvim_create_autocmd(
+    {
+        "BufNewFile",
+        "BufRead",
+    },
+    {
+        pattern = "*.p4",
+        callback = function()
+                local buf = vim.api.nvim_get_current_buf()
+                vim.api.nvim_buf_set_option(buf, "filetype", "p4")
+        end
+    }
+)
