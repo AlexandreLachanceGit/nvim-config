@@ -47,7 +47,9 @@ lsp.configure('p4_lsp', {
     }
 })
 
-lsp.configure('p4analyzer', {})
+require("lspconfig").gdscript.setup { capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities()) }
+
+-- lsp.configure('p4analyzer', {})
 
 local rt = require("rust-tools").setup({
     server = {

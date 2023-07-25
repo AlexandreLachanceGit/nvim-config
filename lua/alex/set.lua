@@ -26,5 +26,5 @@ vim.lsp.set_log_level("debug")
 if vim.g.neovide then
     print("here")
     vim.g.neovide_transparency = 0.98
-    vim.opt.guifont = { "FiraCode Nerd Font", ":h10" }
+    vim.opt.guifont = { "FiraCode Nerd Font", ":h9" }
 end

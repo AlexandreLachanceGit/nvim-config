@@ -214,6 +214,11 @@ _G.packer_plugins = {
     path = "/home/alex/.local/share/nvim/site/pack/packer/start/telescope.nvim",
     url = "https://github.com/nvim-telescope/telescope.nvim"
   },
+  ["vim-godot"] = {
+    loaded = true,
+    path = "/home/alex/.local/share/nvim/site/pack/packer/start/vim-godot",
+    url = "https://github.com/habamax/vim-godot"
+  },
   ["vim-repeat"] = {
     loaded = true,
     path = "/home/alex/.local/share/nvim/site/pack/packer/start/vim-repeat",
