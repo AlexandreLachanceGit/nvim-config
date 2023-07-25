@@ -33,8 +33,6 @@ require("lazy").setup({
         }
     },
 
-    "andweeb/presence.nvim",
-
     "nvim-lualine/lualine.nvim",
 
     "numToStr/Comment.nvim",
