@@ -19,7 +19,6 @@ vim.keymap.set("n", "<C-r>", function()
     end
 
     local original_word = vim.fn.expand("<cword>")
-    local line = debug.getinfo(1).currentline
 
     vim.cmd("%s/" .. original_word .. "/" .. snake(original_word) .. "/g")
 end)
@@ -53,3 +52,6 @@ end)
 vim.keymap.set("n", "<leader>et", function()
     vim.cmd "InspectTree"
 end)
+
+vim.cmd("cnoremap <A-BS> <c-w>")
+vim.cmd("inoremap <A-BS> <c-w>")
