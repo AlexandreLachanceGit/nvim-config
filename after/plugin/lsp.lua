@@ -3,9 +3,9 @@ local lsp = require('lsp-zero')
 local configs = require("lspconfig.configs")
 local util = require("lspconfig.util")
 
-configs.p4_lsp = {
+configs.p4_lsf = {
     default_config = {
-        cmd = { "p4_lsp" },
+        cmd = { "p4_lsf" },
         filetypes = { "p4" },
         root_dir = util.path.dirname,
     },
@@ -39,7 +39,23 @@ Language Server Protocol for the Language Server Framework.
     },
 }
 
-
+configs.jpipe = {
+    default_config = {
+        cmd = { "jpipe-ls" },
+        filetypes = { "jd" },
+        root_dir = util.path.dirname,
+    },
+    -- on_new_config = function(new_config) end;
+    -- on_attach = function(client, bufnr) end;
+    docs = {
+        description = [[
+Language Server Protocol for JPipe.
+]],
+        default_config = {
+            root_dir = [[root_pattern(".git")]],
+        },
+    },
+}
 
 configs.p4analyzer = {
     default_config = {
@@ -60,11 +76,12 @@ Language Server Protocol for P4.
 }
 
 lsp.configure('lsf_lsf', {})
-lsp.configure('p4_lsp', {
-    settings = {
-        p4test_path = "/home/alex/.local/bin/p4c_backend_p4test",
-        include_path = "/home/alex/Documents/University/Master/p4c/p4include"
-    }
+lsp.configure('jpipe', {})
+lsp.configure('p4_lsf', {
+    -- settings = {
+    --     p4test_path = "/home/alex/.local/bin/p4c_backend_p4test",
+    --     include_path = "/home/alex/Documents/University/Master/p4c/p4include"
+    -- }
 })
 
 require("lspconfig").gdscript.setup { capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol
