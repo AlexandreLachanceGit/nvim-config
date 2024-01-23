@@ -5,7 +5,7 @@ local util = require("lspconfig.util")
 
 configs.p4_lsf = {
     default_config = {
-        cmd = { "p4_lsf" },
+        cmd = { "lever_p4" },
         filetypes = { "p4" },
         root_dir = util.path.dirname,
     },
