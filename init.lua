@@ -54,7 +54,7 @@ require("lazy").setup({
 
     "habamax/vim-godot",
 
-
+    'lervag/vimtex',
 
     {
         'VonHeikemen/lsp-zero.nvim',
