@@ -5,9 +5,8 @@ vim.keymap.set("n", "<leader>t", function()
 end)
 
 vim.keymap.set("n", "<C-s>", function()
-    vim.lsp.buf.format()
+    pcall(vim.lsp.buf.format)
     vim.cmd("w")
-    print("File saved and formatted.")
 end)
 
 vim.keymap.set("v", "J", ":m '>+2<CR>gv=gv")
