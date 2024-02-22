@@ -20,6 +20,8 @@ require("lazy").setup({
         tag = "0.1.1",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
+
+    "sainnhe/sonokai",
     "marko-cerovac/material.nvim",
 
     { "nvim-treesitter/nvim-treesitter" }, --, { build = ":TSUpdate" }*/ },
@@ -55,6 +57,16 @@ require("lazy").setup({
     "habamax/vim-godot",
 
     'lervag/vimtex',
+
+    {
+        "folke/which-key.nvim",
+        event = "VeryLazy",
+        init = function()
+            vim.o.timeout = true
+            vim.o.timeoutlen = 300
+        end,
+        opts = {}
+    },
 
     {
         'VonHeikemen/lsp-zero.nvim',
