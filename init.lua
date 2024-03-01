@@ -43,6 +43,12 @@ require("lazy").setup({
 
     "simrat39/rust-tools.nvim",
 
+    {
+        'mrcjkb/haskell-tools.nvim',
+        version = '^3', -- Recommended
+        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+    },
+
     "lewis6991/gitsigns.nvim",
 
     {
