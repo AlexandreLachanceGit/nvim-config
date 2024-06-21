@@ -12,16 +12,16 @@ end)
 vim.keymap.set("v", "J", ":m '>+2<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
-vim.keymap.set("n", "<C-r>", function()
-    local function snake(s)
-        return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)',
-            '%1_%2'):lower()
-    end
-
-    local original_word = vim.fn.expand("<cword>")
-
-    vim.cmd("%s/" .. original_word .. "/" .. snake(original_word) .. "/g")
-end)
+-- vim.keymap.set("n", "<C-r>", function()
+--     local function snake(s)
+--         return s:gsub('%f[^%l]%u', '_%1'):gsub('%f[^%a]%d', '_%1'):gsub('%f[^%d]%a', '_%1'):gsub('(%u)(%u%l)',
+--             '%1_%2'):lower()
+--     end
+--
+--     local original_word = vim.fn.expand("<cword>")
+--
+--     vim.cmd("%s/" .. original_word .. "/" .. snake(original_word) .. "/g")
+-- end)
 
 vim.keymap.set("x", "<leader>p", "\"_dP")
 
@@ -55,3 +55,9 @@ end)
 
 vim.cmd("cnoremap <A-BS> <c-w>")
 vim.cmd("inoremap <A-BS> <c-w>")
+
+-- More intuitive for wrapped lines
+vim.api.nvim_set_keymap('n', 'j', 'gj', { noremap = true })
+vim.api.nvim_set_keymap('n', 'k', 'gk', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gj', 'j', { noremap = true })
+vim.api.nvim_set_keymap('n', 'gk', 'k', { noremap = true })

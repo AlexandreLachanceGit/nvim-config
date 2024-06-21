@@ -15,6 +15,11 @@ require("remap")
 require("set")
 
 require("lazy").setup({
+    ui = {
+        border = "rounded",
+    },
+
+
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
@@ -41,7 +46,11 @@ require("lazy").setup({
 
     "numToStr/Comment.nvim",
 
-    "simrat39/rust-tools.nvim",
+    {
+        'mrcjkb/rustaceanvim',
+        version = '^4', -- Recommended
+        lazy = false,   -- This plugin is already lazy
+    },
 
     {
         'mrcjkb/haskell-tools.nvim',
@@ -63,6 +72,7 @@ require("lazy").setup({
     "habamax/vim-godot",
 
     'lervag/vimtex',
+    "barreiroleo/ltex-extra.nvim",
 
     {
         "folke/which-key.nvim",
@@ -91,7 +101,13 @@ require("lazy").setup({
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },     -- Required
             { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' },     -- Required
+            {
+                "L3MON4D3/LuaSnip",
+                -- follow latest release.
+                version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+                -- install jsregexp (optional!).
+                build = "make install_jsregexp"
+            }, -- Required
 
             -- Autocompletion sources
             'hrsh7th/cmp-nvim-lsp',
