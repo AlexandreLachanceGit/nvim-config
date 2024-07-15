@@ -103,7 +103,13 @@ lsp.configure('p4_lsf', {
     -- }
 })
 
-require("lspconfig").ltex.setup { on_attach = function(client, bufnr) require("ltex_extra").setup {} end, settings = { ltex = {} } }
+require("lspconfig").ltex.setup { on_attach = function(client, bufnr)
+    require("ltex_extra").setup {
+        load_langs = { "en-CA" },
+    }
+end, settings = { ltex = {
+    language = "en-CA",
+} } }
 
 require("lspconfig").gdscript.setup { capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol
     .make_client_capabilities()) }
