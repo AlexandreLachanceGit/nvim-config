@@ -19,18 +19,15 @@ require("lazy").setup({
         border = "rounded",
     },
 
-
     {
         "nvim-telescope/telescope.nvim",
         tag = "0.1.1",
         dependencies = { "nvim-lua/plenary.nvim" }
     },
 
-    "sainnhe/sonokai",
     "marko-cerovac/material.nvim",
 
-    { "nvim-treesitter/nvim-treesitter" }, --, { build = ":TSUpdate" }*/ },
-    "windwp/nvim-autopairs",
+    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
 
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -44,18 +41,13 @@ require("lazy").setup({
 
     "nvim-lualine/lualine.nvim",
 
-    "numToStr/Comment.nvim",
+    "echasnovski/mini.comment",
+    "echasnovski/mini.pairs",
 
     {
         'mrcjkb/rustaceanvim',
         version = '^4', -- Recommended
         lazy = false,   -- This plugin is already lazy
-    },
-
-    {
-        'mrcjkb/haskell-tools.nvim',
-        version = '^3', -- Recommended
-        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
     },
 
     "lewis6991/gitsigns.nvim",
@@ -71,8 +63,14 @@ require("lazy").setup({
 
     "habamax/vim-godot",
 
-    'lervag/vimtex',
-    "barreiroleo/ltex-extra.nvim",
+    {
+        "olimorris/codecompanion.nvim",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-treesitter/nvim-treesitter",
+        },
+        config = true,
+    },
 
     {
         "folke/which-key.nvim",
