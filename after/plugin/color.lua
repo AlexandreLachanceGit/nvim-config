@@ -23,7 +23,7 @@ require('material').setup({
         -- Available plugins:
         -- "dap",
         -- "dashboard",
-        -- "gitsigns",
+        "gitsigns",
         -- "hop",
         -- "indent-blankline",
         -- "lspsaga",
@@ -33,10 +33,10 @@ require('material').setup({
         -- "nvim-navic",
         -- "nvim-tree",
         -- "nvim-web-devicons",
-        -- "sneak",
-        -- "telescope",
+        "sneak",
+        "telescope",
         -- "trouble",
-        -- "which-key",
+        "which-key",
     },
 
     disable = {

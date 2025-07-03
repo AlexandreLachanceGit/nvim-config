@@ -64,15 +64,6 @@ require("lazy").setup({
     "habamax/vim-godot",
 
     {
-        "olimorris/codecompanion.nvim",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "nvim-treesitter/nvim-treesitter",
-        },
-        config = true,
-    },
-
-    {
         "folke/which-key.nvim",
         event = "VeryLazy",
         init = function()
@@ -82,6 +73,18 @@ require("lazy").setup({
         opts = {}
     },
 
+
+    -- lazy.nvim
+    {
+        "stevearc/conform.nvim",
+        config = function()
+            require("conform").setup({
+                formatters_by_ft = {
+                    python = { "black" },
+                },
+            })
+        end,
+    },
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
@@ -116,6 +119,14 @@ require("lazy").setup({
             'rafamadriz/friendly-snippets',
             'L3MON4D3/LuaSnip'
         }
+    },
+    {
+        "mfussenegger/nvim-dap",
+        dependencies = {
+            "rcarriga/nvim-dap-ui",
+            "mfussenegger/nvim-dap-python",
+            "nvim-neotest/nvim-nio"
+        },
     }
 })
 
@@ -160,3 +171,10 @@ vim.api.nvim_create_autocmd(
         end
     }
 )
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function(args)
+    require("conform").format({ bufnr = args.buf })
+  end,
+})

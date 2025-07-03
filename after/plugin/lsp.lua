@@ -1,5 +1,6 @@
 local lsp = require('lsp-zero')
 
+local lspconfig = require("lspconfig")
 local configs = require("lspconfig.configs")
 local util = require("lspconfig.util")
 
@@ -130,6 +131,21 @@ require("lspconfig").gdscript.setup { capabilities = require('cmp_nvim_lsp').def
 --         },
 --     },
 -- })
+
+-- if not configs.pyrefly then
+--     configs.pyrefly = {
+--         default_config = {
+--             cmd = { "uv", "run", "pyrefly", "lsp" },
+--             filetypes = { "python" },
+--             root_dir = function(fname)
+--                 return lspconfig.util.find_git_ancestor(fname) or vim.loop.os_homedir()
+--             end,
+--             settings = {},
+--         }
+--     }
+-- end
+--
+-- lspconfig.pyrefly.setup({})
 
 lsp.preset('recommended')
 lsp.nvim_workspace()

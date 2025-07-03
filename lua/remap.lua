@@ -5,8 +5,13 @@ vim.keymap.set("n", "<leader>t", function()
 end)
 
 vim.keymap.set("n", "<C-s>", function()
-    pcall(vim.lsp.buf.format)
+    -- pcall(vim.lsp.buf.format)
     vim.cmd("w")
+end)
+
+vim.keymap.set("n", "<leader>w", function()
+    -- pcall(vim.lsp.buf.format)
+    vim.cmd("noautocmd w")
 end)
 
 vim.keymap.set("v", "J", ":m '>+2<CR>gv=gv")
@@ -51,6 +56,14 @@ end)
 
 vim.keymap.set("n", "<leader>et", function()
     vim.cmd "InspectTree"
+end)
+
+vim.keymap.set("n", "<leader>gh", function()
+    vim.cmd "Gitsigns preview_hunk_inline"
+end)
+
+vim.keymap.set("n", "<leader>gr", function()
+    vim.cmd "Gitsigns reset_hunk"
 end)
 
 vim.cmd("cnoremap <A-BS> <c-w>")
