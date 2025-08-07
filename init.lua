@@ -81,6 +81,7 @@ require("lazy").setup({
             require("conform").setup({
                 formatters_by_ft = {
                     python = { "black" },
+                    cpp = { "clang-format", lsp_format = "prefer" },
                 },
             })
         end,
@@ -176,5 +177,13 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
   callback = function(args)
     require("conform").format({ bufnr = args.buf })
+  end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "c", "cpp" },
+  callback = function()
+    vim.opt_local.foldmethod = "marker"
+    vim.opt_local.foldmarker = "#ifdef,#endif"
   end,
 })

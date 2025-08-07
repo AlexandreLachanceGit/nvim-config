@@ -104,14 +104,6 @@ lsp.configure('p4_lsf', {
     -- }
 })
 
-require("lspconfig").ltex.setup { on_attach = function(client, bufnr)
-    require("ltex_extra").setup {
-        load_langs = { "en-CA" },
-    }
-end, settings = { ltex = {
-    language = "en-CA",
-} } }
-
 require("lspconfig").gdscript.setup { capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol
     .make_client_capabilities()) }
 
@@ -146,6 +138,16 @@ require("lspconfig").gdscript.setup { capabilities = require('cmp_nvim_lsp').def
 -- end
 --
 -- lspconfig.pyrefly.setup({})
+
+lspconfig.clangd.setup({
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--header-insertion=iwyu",
+    "--completion-style=detailed",
+  },
+})
 
 lsp.preset('recommended')
 lsp.nvim_workspace()
