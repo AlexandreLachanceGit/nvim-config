@@ -43,6 +43,7 @@ require("lazy").setup({
 
     "echasnovski/mini.comment",
     "echasnovski/mini.pairs",
+    "echasnovski/mini.cursorword",
 
     {
         'mrcjkb/rustaceanvim',
@@ -82,6 +83,7 @@ require("lazy").setup({
                 formatters_by_ft = {
                     python = { "black" },
                     cpp = { "clang-format", lsp_format = "prefer" },
+                    rust = { "rust-analyzer", lsp_format = "prefer" }
                 },
             })
         end,

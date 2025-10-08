@@ -66,6 +66,18 @@ vim.keymap.set("n", "<leader>gr", function()
     vim.cmd "Gitsigns reset_hunk"
 end)
 
+vim.keymap.set("n", "<leader>nw", function()
+    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.WARN })
+end)
+
+vim.keymap.set("n", "<leader>ne", function()
+    vim.diagnostic.goto_next({ severity = vim.diagnostic.severity.ERROR })
+end)
+
+vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>")
+vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
+vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>")
+
 vim.cmd("cnoremap <A-BS> <c-w>")
 vim.cmd("inoremap <A-BS> <c-w>")
 
