@@ -21,6 +21,9 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 vim.opt.splitright = true
 
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+
 if vim.g.neovide then
     print("here")
     vim.g.neovide_transparency = 0.98
