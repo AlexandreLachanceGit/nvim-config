@@ -75,6 +75,11 @@ require("lazy").setup({
     },
 
 
+    {
+        "Vimjas/vim-python-pep8-indent",
+        ft = "python",
+    },
+
     -- lazy.nvim
     {
         "stevearc/conform.nvim",
@@ -132,48 +137,6 @@ require("lazy").setup({
         },
     }
 })
-
-vim.api.nvim_create_autocmd(
-    {
-        "BufNewFile",
-        "BufRead",
-    },
-    {
-        pattern = "*.p4",
-        callback = function()
-            local buf = vim.api.nvim_get_current_buf()
-            vim.api.nvim_buf_set_option(buf, "filetype", "p4")
-        end
-    }
-)
-
-vim.api.nvim_create_autocmd(
-    {
-        "BufNewFile",
-        "BufRead",
-    },
-    {
-        pattern = "*.lsf",
-        callback = function()
-            local buf = vim.api.nvim_get_current_buf()
-            vim.api.nvim_buf_set_option(buf, "filetype", "lsf")
-        end
-    }
-)
-
-vim.api.nvim_create_autocmd(
-    {
-        "BufNewFile",
-        "BufRead",
-    },
-    {
-        pattern = "*.jd",
-        callback = function()
-            local buf = vim.api.nvim_get_current_buf()
-            vim.api.nvim_buf_set_option(buf, "filetype", "jd")
-        end
-    }
-)
 
 vim.api.nvim_create_autocmd("BufWritePre", {
   pattern = "*",
