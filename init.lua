@@ -139,6 +139,11 @@ require("lazy").setup({
     {
       "coder/claudecode.nvim",
       dependencies = { "folke/snacks.nvim" },
+      opts = {
+        terminal = {
+          provider = "none", -- no UI actions; server + tools remain available
+        },
+      },
       config = true,
       keys = {
         { "<leader>a", nil, desc = "AI/Claude Code" },
