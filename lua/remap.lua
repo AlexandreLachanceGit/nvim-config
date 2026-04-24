@@ -78,6 +78,10 @@ vim.keymap.set("n", "<leader>ng", function()
     vim.cmd "Gitsigns next_hunk"
 end)
 
+vim.keymap.set("n", "<leader>r", function()
+    vim.cmd "ea"
+end)
+
 vim.keymap.set("n", "<leader>dd", "<cmd>Telescope diagnostics<CR>")
 vim.keymap.set("n", "<leader>gs", "<cmd>Telescope git_status<CR>")
 vim.keymap.set("n", "<leader>gc", "<cmd>Telescope git_commits<CR>")

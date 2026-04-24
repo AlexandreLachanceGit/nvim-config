@@ -25,9 +25,17 @@ require("lazy").setup({
         dependencies = { "nvim-lua/plenary.nvim" }
     },
 
-    "marko-cerovac/material.nvim",
+    "Mofiqul/vscode.nvim",
 
-    { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+    {
+      'nvim-treesitter/nvim-treesitter',
+      lazy = false,
+      branch = 'main', -- this is the key part
+      dependencies = {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+      },
+      build = ':TSUpdate',
+    },
 
     {
         "nvim-neo-tree/neo-tree.nvim",
@@ -45,16 +53,11 @@ require("lazy").setup({
     "echasnovski/mini.pairs",
     "echasnovski/mini.cursorword",
 
-    {
-        'mrcjkb/rustaceanvim',
-        version = '^4', -- Recommended
-        lazy = false,   -- This plugin is already lazy
-    },
 
     "lewis6991/gitsigns.nvim",
 
     {
-        "ggandor/leap.nvim",
+        url = "https://codeberg.org/andyg/leap.nvim",
         dependencies = {
             "tpope/vim-repeat"
         }
@@ -93,41 +96,26 @@ require("lazy").setup({
             })
         end,
     },
+    { 'neovim/nvim-lspconfig' },
     {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v2.x',
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' }, -- Required
-            {                            -- Optional
-                'williamboman/mason.nvim',
-                build = function()
-                    pcall(vim.api.nvim_command, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
-
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },     -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            {
-                "L3MON4D3/LuaSnip",
-                -- follow latest release.
-                version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-                -- install jsregexp (optional!).
-                build = "make install_jsregexp"
-            }, -- Required
-
-            -- Autocompletion sources
-            'hrsh7th/cmp-nvim-lsp',
-            'hrsh7th/cmp-buffer',
-            'hrsh7th/cmp-path',
-            'hrsh7th/cmp-nvim-lua',
-            'saadparwaiz1/cmp_luasnip',
-            'rafamadriz/friendly-snippets',
-            'L3MON4D3/LuaSnip'
-        }
+        'williamboman/mason.nvim',
+        build = function()
+            pcall(vim.api.nvim_command, 'MasonUpdate')
+        end,
     },
+    { 'williamboman/mason-lspconfig.nvim' },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'hrsh7th/cmp-nvim-lua' },
+    {
+        'L3MON4D3/LuaSnip',
+        version = "v2.*",
+        build = "make install_jsregexp"
+    },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'rafamadriz/friendly-snippets' },
     {
         "mfussenegger/nvim-dap",
         dependencies = {

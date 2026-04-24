@@ -1,35 +1,28 @@
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { "python", "javascript", "typescript", "rust", "c", "lua", "vim" },
+-- nvim-treesitter main branch uses a new API; highlighting is driven by
+-- Neovim's built-in vim.treesitter rather than the old configs module.
 
-    -- Install parsers synchronously (only applied to `ensure_installed`)
-    sync_install = false,
+vim.api.nvim_create_autocmd('FileType', {
+    callback = function(ev)
+        pcall(vim.treesitter.start)
 
-    -- Automatically install missing parsers when entering buffer
-    -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-    auto_install = true,
+        if ev.match ~= 'python' then
+            vim.opt_local.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end
 
-    highlight = {
-        -- `false` will disable the whole extension
-        enable = true,
+        local lang = vim.treesitter.language.get_lang(ev.match) or ev.match
+        local config = require('nvim-treesitter.config')
+        if not vim.list_contains(config.get_installed(), lang) then
+            if vim.list_contains(config.get_available(), lang) then
+                require('nvim-treesitter').install({ lang })
+            end
+        end
+    end,
+})
 
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = false,
-    },
-
-    indent = {
-        enable = true,
-        disable = { "python" }
-    },
-}
-
-local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
-parser_config.p4 = {
+local parsers = require('nvim-treesitter.parsers')
+parsers.p4 = {
     install_info = {
-        url = "~/Documents/University/Master/tree-sitter-p4", -- local path or git repo
-        files = { "src/parser.c", "src/scanner.c" },
+        url = '~/Documents/University/Master/tree-sitter-p4',
+        files = { 'src/parser.c', 'src/scanner.c' },
     },
-    filetype = "p4", -- if filetype does not match the parser name
 }
